@@ -1,19 +1,24 @@
 <?php 
-    // Start Session
-    session_start();
+// Start Session
+session_start();
 
-    // Create Constants to Store Non Repeating Values
-    define('SITEURL', 'http://localhost/food-order/');
-    define('LOCALHOST', 'localhost');
-    define('DB_USERNAME', 'root');
-    define('DB_PASSWORD', '');
-    define('DB_NAME', 'food-order');
-    define('DB_PORT', 3307); // port number for XAMPP MySQL
+// Create Constants
+define('SITEURL', 'http://localhost/food-order/');
+define('LOCALHOST', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
+define('DB_NAME', 'food-order');
 
-    //default was 3306 and it created error so changed the port 
+// 🔹 Try connecting first on default port (3306)
+$conn = @mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD, DB_NAME, 3306);
 
-    // Database Connection
-    $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PORT) 
-        or die(mysqli_error($conn));
+// 🔹 If connection fails, try port 3307 automatically
+if (!$conn) {
+    $conn = @mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD, DB_NAME, 3307);
+}
 
+// 🔹 If still fails, stop and show the exact error
+if (!$conn) {
+    die('Database connection failed: ' . mysqli_connect_error());
+}
 ?>

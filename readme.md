@@ -15,9 +15,9 @@ This project allows admins to manage food items, categories, orders, and custome
 ![Admin Dashboard](images_github/img12.png)
 
 
-![Update Admin](images_github/img13.jpg)
+![Update Admin](images_github/img13.png)
 
-![ Admin](images_github/img14.jpg)
+![ Admin](images_github/img14.png)
 
 
 Browse available food items
